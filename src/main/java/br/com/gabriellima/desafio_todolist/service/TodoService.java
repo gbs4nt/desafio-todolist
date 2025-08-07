@@ -11,7 +11,7 @@ import java.util.List;
 public class TodoService {
 
 
-    private TodoRepository todoRepository;
+    private final TodoRepository todoRepository;
 
     public TodoService(TodoRepository todoRepository){
         this.todoRepository = todoRepository;
@@ -25,7 +25,7 @@ public class TodoService {
     }
     public List<Todo> list(){
     Sort sort =    Sort.by("prioridade").descending().and(
-                Sort.by("nome").ascending()
+                Sort.by("name").ascending()
         ); //forma de ordenar as tarefas por ordem de prioridade descending e ascending(menor para maior e maior para menor respectivamente)
        return todoRepository.findAll(sort);
 
