@@ -1,6 +1,8 @@
 package br.com.gabriellima.desafio_todolist.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table (name = "todos")
@@ -9,11 +11,23 @@ public class Todo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank
     private String name;
+    @NotBlank
     private String descricao;
     private boolean realizado;
     private int prioridade;
 
+    public Todo(String name, String descricao, boolean realizado, int prioridade) {
+        this.name = name;
+        this.descricao = descricao;
+        this.realizado = realizado;
+        this.prioridade = prioridade;
+    }
+
+    public Todo(){
+
+    }
     public Long getId() {
         return id;
     }
